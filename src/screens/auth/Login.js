@@ -10,7 +10,8 @@ import {
 
 import { Touchable } from "../../components";
 import Logo from "../../assets/logo.png";
-
+import Google from "../../assets/google.png";
+import Telegram from "../../assets/google.png";
 class Login extends Component {
   render() {
     return (
@@ -28,22 +29,21 @@ class Login extends Component {
             </Text>
           </View>
           <View style={styles.inputsBox}>
-            <TextInput
-              style={styles.input}
-              placeholder={"نام کاربری یا شماره همراه"}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder={"رمز عبور"}
-              secureTextEntry
-            />
+            <TextInput style={styles.input} placeholder={"شماره همراه"} />
           </View>
           <Touchable style={styles.loginBtn}>
             <Text style={styles.loginBtnTxt}>ورود</Text>
           </Touchable>
-          <View style={styles.register}>
-            <Text style={styles.haveAccount}>حساب کاربری ندارید؟</Text>
-            <Text style={styles.registerText}> ثبت‌نام کنید</Text>
+          <View style={styles.login3rd}>
+            <View style={styles.login3rdBtn}>
+              <Image source={Google} />
+              <Text style={styles.login3rdText}>ورود با گوگل</Text>
+            </View>
+            <View style={styles.login3rdHr} />
+            <View style={styles.login3rdBtn}>
+              <Image source={Telegram} />
+              <Text style={styles.login3rdText}>ورود با تلگرام</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     color: "white"
   },
   block: {
-    flex: 3,
+    flex: 1,
     backgroundColor: "white",
     marginHorizontal: 10,
     paddingHorizontal: 30,
@@ -116,21 +116,28 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 14
   },
-  register: {
-    paddingTop: 119,
-    justifyContent: "center",
+  login3rd: {
+    flex: 1,
     flexDirection: "row-reverse"
   },
-  haveAccount: {
-    fontFamily: "IRANYekanWeb",
-    color: "#bcbcbc",
-    fontSize: 12
+  login3rdBtn: {
+    flex: 1,
+    alignItems: "center",
+    flexDirection: "row-reverse",
+    justifyContent: "center"
   },
-  registerText: {
-    fontFamily: "IRANYekanWeb-bold",
-    color: "#8dc342",
-    fontWeight: "700",
-    fontSize: 12
+  login3rdText: {
+    fontFamily: "IRANYekanWeb",
+    fontSize: 14,
+    paddingRight: 6,
+    fontWeight: "400",
+    color: "#676767"
+  },
+  login3rdHr: {
+    height: 18,
+    borderRightWidth: 1,
+    borderColor: "#ebebeb",
+    marginVertical: 26
   }
 });
 

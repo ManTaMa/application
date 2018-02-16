@@ -3,18 +3,27 @@ import {
   Platform,
   TouchableNativeFeedback,
   TouchableOpacity,
-  View
+  View,
+  ActivityIndicator
 } from "react-native";
 
 const Touchable = props => {
-  return Platform.select({
-    ios: () => (
-      <TouchableOpacity activeOpacity={0.7} {...props}>
+  const Com = Platform.select({
+    ios: TouchableOpacity,
+    android: TouchableNativeFeedback
+  });
+
+  return (
+    <Com activeOpacity={0.6} {...props} style={{}}>
+      {!props.isLoading ? (
         <View style={props.style}>{props.children}</View>
-      </TouchableOpacity>
-    ),
-    android: () => <TouchableNativeFeedback {...props} />
-  })();
+      ) : (
+        <View style={props.style}>
+          <ActivityIndicator color={"white"} />
+        </View>
+      )}
+    </Com>
+  );
 };
 
 export default Touchable;

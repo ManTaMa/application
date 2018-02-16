@@ -13,6 +13,28 @@ import Logo from "../../assets/logo.png";
 import Google from "../../assets/google.png";
 import Telegram from "../../assets/google.png";
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false
+    };
+    this.login = this.login.bind(this);
+  }
+
+  login() {
+    this.setState({
+      isLoading: true
+    });
+    setTimeout(() => {
+      this.setState({
+        isLoading: false
+      });
+      this.props.navigator.push({
+        screen: "auth.code"
+      });
+    }, 1000);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -31,7 +53,11 @@ class Login extends Component {
           <View style={styles.inputsBox}>
             <TextInput style={styles.input} placeholder={"شماره همراه"} />
           </View>
-          <Touchable style={styles.loginBtn}>
+          <Touchable
+            style={styles.loginBtn}
+            onPress={this.login}
+            isLoading={this.state.isLoading}
+          >
             <Text style={styles.loginBtnTxt}>ورود</Text>
           </Touchable>
           <View style={styles.login3rd}>

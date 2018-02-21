@@ -7,7 +7,7 @@ registerScreens();
 Navigation.startSingleScreenApp({
   screen: {
     screen: "auth.login",
-    title: "ass",
+    title: "Login",
     navigatorStyle: {
       navBarHidden: true
     }
